@@ -21,15 +21,18 @@ public class ItemService {
     }
 
     public String getAll(){
+        setGroceryItems();
         return "---ITEMS EXISTENTES---\n"+groceryItems.toString();
     }
 
     public String insert(GroceryItem groceryItem){
+        setGroceryItems();
         groceryItems.add(new GroceryItem(groceryItem.getId(), groceryItem.getName(), groceryItem.getQuantity(), groceryItem.getCategory()));
         return "---ITEM INSERTADO---\n"+groceryItem.toString();
     }
 
     public String update(GroceryItem groceryItem){
+        setGroceryItems();
         Iterator<GroceryItem> iterator = groceryItems.iterator();
         while (iterator.hasNext()) {
             GroceryItem item = iterator.next();
@@ -40,17 +43,11 @@ public class ItemService {
                 return "---ITEM ACTUALIZADO---\n"+item.toString();
             }
         }
-        GroceryItem item = new GroceryItem();
-        item.setId(groceryItem.getId());
-        item.setName(groceryItem.getName());
-        item.setQuantity(groceryItem.getQuantity());
-        item.setCategory(groceryItem.getCategory());
-        groceryItems.add(item);
-
-        return "---ITEM NO FUE ENCONTRADO, ENTONCES SE CREÓ---\n"+item.toString();
+        return "---ITEM NO ENCONTRADO---";
     }
 
     public String delete(String id) {
+        setGroceryItems();
         Iterator<GroceryItem> iterator = groceryItems.iterator();
         while (iterator.hasNext()) {
             GroceryItem item = iterator.next();
@@ -63,6 +60,7 @@ public class ItemService {
     }
 
     public String updateData(String id, GroceryItem groceryItem){
+        setGroceryItems();
         Iterator<GroceryItem> iterator = groceryItems.iterator();
         while(iterator.hasNext()) {
             GroceryItem item = iterator.next();
