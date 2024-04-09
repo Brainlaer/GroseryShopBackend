@@ -12,12 +12,17 @@ public class ItemService {
 
     private List<GroceryItem> groceryItems;
 
+    //esta variable indica si setGroceryItems() ya ha sido iniciada, si no ha sido iniciada entonces se asignan los datos a la lista, de lo contrario no hace nada
+    boolean started=false;
     public void setGroceryItems(){
-        this.groceryItems = new ArrayList();
-        groceryItems.add(new GroceryItem("Whole", "Whole Wheat Biscuit", 5, "snacks"));
-        groceryItems.add(new GroceryItem("Dried", "Dried Whole Red Chilli", 2, "spices"));
-        groceryItems.add(new GroceryItem("Pearl", "Healthy Pearl Millet", 1, "millets"));
-        groceryItems.add(new GroceryItem("Cheese", "Bonny Cheese Crackers Plain", 6, "snacks"));
+        if (this.started==false){
+            this.groceryItems = new ArrayList();
+            groceryItems.add(new GroceryItem("Whole", "Whole Wheat Biscuit", 5, "snacks"));
+            groceryItems.add(new GroceryItem("Dried", "Dried Whole Red Chilli", 2, "spices"));
+            groceryItems.add(new GroceryItem("Pearl", "Healthy Pearl Millet", 1, "millets"));
+            groceryItems.add(new GroceryItem("Cheese", "Bonny Cheese Crackers Plain", 6, "snacks"));
+            this.started=true;
+        }
     }
 
     public String getAll(){
