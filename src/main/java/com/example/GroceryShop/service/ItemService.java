@@ -12,7 +12,7 @@ public class ItemService {
 
     private List<GroceryItem> groceryItems;
 
-    //esta variable indica si setGroceryItems() ya ha sido iniciada, si no ha sido iniciada entonces se asignan los datos a la lista, de lo contrario no hace nada
+    //esta variable indica si setGroceryItems() ya ha sido iniciada, si no ha sido iniciada entonces se asignan los datos a la lista groceryItems, de lo contrario no hace nada
     boolean started=false;
     public void setGroceryItems(){
         if (this.started==false){
